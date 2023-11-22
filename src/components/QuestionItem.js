@@ -1,23 +1,28 @@
 import React from "react";
 
-function QuestionItem({ question }) {
+function QuestionItem({ question, onDeleteQuestion }) {
+  if (!question) {
+    // Handle the case where 'question' is undefined or null
+    return null;
+  }
+
   const { id, prompt, answers, correctIndex } = question;
 
-  const options = answers.map((answer, index) => (
-    <option key={index} value={index}>
-      {answer}
-    </option>
-  ));
+  // Add checks for the existence of 'answers' array and 'correctIndex'
+  const promptText = prompt || "N/A";
+  const correctAnswer =
+    answers && answers.length > correctIndex ? answers[correctIndex] : "N/A";
+
+  const handleDeleteClick = () => {
+    onDeleteQuestion(id);
+  };
 
   return (
     <li>
       <h4>Question {id}</h4>
-      <h5>Prompt: {prompt}</h5>
-      <label>
-        Correct Answer:
-        <select defaultValue={correctIndex}>{options}</select>
-      </label>
-      <button>Delete Question</button>
+      <h5>Prompt: {promptText}</h5>
+      <label>Correct Answer: {correctAnswer}</label>
+      <button onClick={handleDeleteClick}>Delete Question</button>
     </li>
   );
 }
