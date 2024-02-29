@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"; 
 import QuestionItem from "./QuestionItem";
 
-	const url =("http://localhost:4000/questions")
+	const url =("http://localhost:4000/questions/")
 
 function QuestionList() {
 	const [questions, setQuestions] = useState([]);
