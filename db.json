@@ -1,39 +1,6 @@
 {
   "questions": [
     {
-      "id": 1,
-      "prompt": "What special prop should always be included for lists of elements?",
-      "answers": [
-        "id",
-        "name",
-        "key",
-        "prop"
-      ],
-      "correctIndex": 2
-    },
-    {
-      "id": 2,
-      "prompt": "A React component is a function that returns ______.",
-      "answers": [
-        "HTML",
-        "JSX",
-        "props",
-        "state"
-      ],
-      "correctIndex": 1
-    },
-    {
-      "id": 3,
-      "prompt": "Which event handler will run when a user is finished filling out a form?",
-      "answers": [
-        "onSubmit",
-        "onClick",
-        "onChange",
-        "onForm"
-      ],
-      "correctIndex": 0
-    },
-    {
       "id": 4,
       "prompt": "______ is a tool that transpiles JSX into valid JavaScript.",
       "answers": [
@@ -65,6 +32,39 @@
         "controlled"
       ],
       "correctIndex": 1
+    },
+    {
+      "prompt": "test",
+      "answers": [
+        "test",
+        "test",
+        "tse4",
+        "tset"
+      ],
+      "correctIndex": 0,
+      "id": 7
+    },
+    {
+      "prompt": "test",
+      "answers": [
+        "test",
+        "test",
+        "tse4",
+        "tset"
+      ],
+      "correctIndex": 0,
+      "id": 8
+    },
+    {
+      "prompt": "",
+      "answers": [
+        "",
+        "",
+        "",
+        ""
+      ],
+      "correctIndex": 0,
+      "id": 9
     }
   ]
 }
