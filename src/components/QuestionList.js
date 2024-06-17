@@ -2,7 +2,6 @@ import React, { useEffect, useState } from "react";
 import QuestionItem from "./QuestionItem";
 
 function QuestionList({ qList, onQuestionDelete, onUpdate }) {
-  
   if(!qList) return <h2>Loading...</h2>
 
   return (
