@@ -9,6 +9,20 @@ function QuestionItem({ question }) {
     </option>
   ));
 
+  const handleDelete = (e) => {
+    const options = {
+      method: 'DELETE',
+      headers:
+      {
+        "Content-Type": "application/json",
+        Accept: "application/json"
+      }
+    }
+    fetch(`http://localhost:4000/questions/${id}`, options)
+    .then(_resp => e.target.parentElement.remove())
+  }
+
+
   return (
     <li>
       <h4>Question {id}</h4>
@@ -17,7 +31,7 @@ function QuestionItem({ question }) {
         Correct Answer:
         <select defaultValue={correctIndex}>{options}</select>
       </label>
-      <button>Delete Question</button>
+      <button onClick={handleDelete}>Delete Question</button>
     </li>
   );
 }
