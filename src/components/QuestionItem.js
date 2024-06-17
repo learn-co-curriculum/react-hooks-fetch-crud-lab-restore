@@ -13,8 +13,8 @@ function QuestionItem({ question, onDeleteQuestion }) {
     fetch(`http://localhost:4000/questions/${id}`, {
       method: "DELETE",
     })
-      .then((response) => response.json())
-      .then((deleteData) => console.log(deleteData))
+      .then(() => onDeleteQuestion(id))
+      .catch((error) => console.error("Error:", error));
   }
 
   return (

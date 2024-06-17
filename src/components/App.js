@@ -17,13 +17,19 @@ function App() {
     setQuestions([...questions, newQuestion]);
   }
 
+  function handleDeleteQuestion(id) {
+    const updatedQuestions = questions.filter((questions) => questions.id !== id)
+    setQuestions(updatedQuestions)
+  }
+
+
   return (
     <main>
       <AdminNavBar onChangePage={setPage} />
       {page === "Form" ? (
         <QuestionForm onAddQuestions={handleAddQuestion} />
       ) : (
-        <QuestionList questions={questions} />
+        <QuestionList questions={questions} onDeleteQuestion={handleDeleteQuestion} />
       )}
     </main>
   );
