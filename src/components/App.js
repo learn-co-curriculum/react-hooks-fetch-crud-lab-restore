@@ -22,6 +22,12 @@ function App() {
     setQuestions(updatedQuestions)
   }
 
+  function handleAnswerChange(updatedQuestion) {
+    const updateQuestions = questions.map((question) => {
+     return question.id === updatedQuestion.id ? updatedQuestion : question
+    })
+    setQuestions(updateQuestions)
+  }
 
   return (
     <main>
@@ -29,7 +35,11 @@ function App() {
       {page === "Form" ? (
         <QuestionForm onAddQuestions={handleAddQuestion} />
       ) : (
-        <QuestionList questions={questions} onDeleteQuestion={handleDeleteQuestion} />
+        <QuestionList
+          questions={questions}
+          onDeleteQuestion={handleDeleteQuestion}
+          onUpdateAnswer={handleAnswerChange}
+        />
       )}
     </main>
   );
