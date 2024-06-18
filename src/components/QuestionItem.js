@@ -1,5 +1,5 @@
 import React from "react"
-import { deleteQuestion } from "../utils/fetchers"
+import { deleteQuestion, updateQuestion } from "../utils/fetchers"
 
 function QuestionItem({ question, onDelete }) {
   const { id, prompt, answers, correctIndex } = question
@@ -9,6 +9,12 @@ function QuestionItem({ question, onDelete }) {
       {answer}
     </option>
   ))
+
+  const handleChange = (event) => {
+    const correctIndex = event.target.value
+
+    updateQuestion(question.id, { correctIndex })
+  }
 
   const handleDelete = () => {
     deleteQuestion(question.id).then(() => onDelete(question))
@@ -20,7 +26,9 @@ function QuestionItem({ question, onDelete }) {
       <h5>Prompt: {prompt}</h5>
       <label>
         Correct Answer:
-        <select defaultValue={correctIndex}>{options}</select>
+        <select defaultValue={correctIndex} onChange={handleChange}>
+          {options}
+        </select>
       </label>
       <button onClick={handleDelete}>Delete Question</button>
     </li>

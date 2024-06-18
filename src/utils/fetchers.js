@@ -16,6 +16,16 @@ export const createQuestion = (questionData) => {
   }).then((response) => response.json())
 }
 
-export const deleteQuestion = (id) => {
-  return fetch(questionsUrl + id, { method: "Delete" })
+export const deleteQuestion = (questionId) => {
+  return fetch(questionsUrl + questionId, { method: "Delete" })
+}
+
+export const updateQuestion = (questionId, questionData) => {
+  return fetch(questionsUrl + questionId, {
+    method: "PATCH",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(questionData),
+  }).then((response) => response.json())
 }
