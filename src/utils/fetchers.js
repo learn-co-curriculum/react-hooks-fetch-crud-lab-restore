@@ -1,4 +1,4 @@
-const questionsUrl = "http://localhost:4000/questions"
+const questionsUrl = "http://localhost:4000/questions/"
 
 export const fetchQuestions = (setQuestions) => {
   fetch(questionsUrl)
@@ -14,4 +14,8 @@ export const createQuestion = (questionData) => {
     },
     body: JSON.stringify(questionData),
   }).then((response) => response.json())
+}
+
+export const deleteQuestion = (id) => {
+  return fetch(questionsUrl + id, { method: "Delete" })
 }

@@ -14,6 +14,14 @@ function App() {
     setQuestions([...questions, newQuestion])
   }
 
+  const handleDelete = (deletedQuestion) => {
+    const updatedQuestions = questions.filter(
+      (question) => question !== deletedQuestion
+    )
+
+    setQuestions(updatedQuestions)
+  }
+
   useEffect(() => fetchQuestions(setQuestions), [])
 
   return (
@@ -22,7 +30,7 @@ function App() {
       {page === "Form" ? (
         <QuestionForm onAddQuestion={handleAddQuestion} />
       ) : (
-        <QuestionList questions={questions} />
+        <QuestionList handleDelete={handleDelete} questions={questions} />
       )}
     </main>
   )
