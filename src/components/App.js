@@ -10,13 +10,17 @@ function App() {
   const [page, setPage] = useState("List")
   const [questions, setQuestions] = useState([])
 
+  const handleAddQuestion = (newQuestion) => {
+    setQuestions([...questions, newQuestion])
+  }
+
   useEffect(() => fetchQuestions(setQuestions), [])
 
   return (
     <main>
       <AdminNavBar onChangePage={setPage} />
       {page === "Form" ? (
-        <QuestionForm />
+        <QuestionForm onAddQuestion={handleAddQuestion} />
       ) : (
         <QuestionList questions={questions} />
       )}
