@@ -1,25 +1,41 @@
-import React, { useState } from "react";
+import React, { useState } from "react"
 
-function QuestionForm(props) {
-  const [formData, setFormData] = useState({
-    prompt: "",
-    answer1: "",
-    answer2: "",
-    answer3: "",
-    answer4: "",
-    correctIndex: 0,
-  });
+import { createQuestion } from "../utils/fetchers"
+
+const initialState = {
+  prompt: "",
+  answer1: "",
+  answer2: "",
+  answer3: "",
+  answer4: "",
+  correctIndex: 0,
+}
+
+function QuestionForm({ onAddQuestion }) {
+  const [formData, setFormData] = useState(initialState)
+  const { prompt, answer1, answer2, answer3, answer4, correctIndex } = formData
+
+  const resetForm = () => setFormData(initialState)
 
   function handleChange(event) {
     setFormData({
       ...formData,
       [event.target.name]: event.target.value,
-    });
+    })
   }
 
+  const sanitizeInput = () => ({
+    prompt: prompt,
+    answers: [answer1, answer2, answer3, answer4],
+    correctIndex: correctIndex,
+  })
+
   function handleSubmit(event) {
-    event.preventDefault();
-    console.log(formData);
+    event.preventDefault()
+
+    const questionData = sanitizeInput()
+
+    createQuestion(questionData).then(onAddQuestion).then(resetForm)
   }
 
   return (
@@ -87,7 +103,7 @@ function QuestionForm(props) {
         <button type="submit">Add Question</button>
       </form>
     </section>
-  );
+  )
 }
 
-export default QuestionForm;
+export default QuestionForm
